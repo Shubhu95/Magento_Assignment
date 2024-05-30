@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Show contactus request in admin grid
+ *
+ * @category: Magento
+ * @package: Adecco\Contactus
+ * @copyright: Copyright © 2024 Magento, Inc. All rights reserved.
+ * @author: Shubham Lade <shubham.lade95@gmail.com>
+ * @keywords: Module Adecco_Contactus
+ */
+ -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="admincontactus" frontName="admincontactus">
+            <module name="Adecco_Contactus" before="Magento_Backend" />
+        </route>
+    </router>
+</config>

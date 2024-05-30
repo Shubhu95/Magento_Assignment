@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Show contactus request in admin grid
+ *
+ * @category: Magento
+ * @package: Adecco\Contactus
+ * @copyright: Copyright © 2024 Magento, Inc. All rights reserved.
+ * @author: Shubham Lade <shubham.lade95@gmail.com>
+ * @keywords: Module Adecco_Contactus
+ */
+ -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Adecco\Contactus\Api\ContactusManagementInterface"
+                type="Adecco\Contactus\Model\ContactusManagement"/>
+    <type name="Magento\Contact\Controller\Index\Post">
+        <plugin name="adecco-contact-controller" type="Adecco\Contactus\Plugin\ContactusPlugin" sortOrder="3"/>
+    </type>
+    <virtualType name="AdeccocontactusGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AdeccocontactusGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Adecco\Contactus\Model\ResourceModel\Contactus\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">AdeccocontactusGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Adecco\Contactus\Model\ResourceModel\Contactus\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">adecco_contactus</argument>
+            <argument name="eventPrefix" xsi:type="string">adecco_contactus_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">adecco_contactus_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Adecco\Contactus\Model\ResourceModel\Contactus</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="admincontactus_contactus_listing_data_source" xsi:type="string">Adecco\Contactus\Model\ResourceModel\Contactus\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Contact\Model\Config">
+        <plugin name="add_multiple_recipient_email" type="Adecco\Contactus\Plugin\ConfigPlugin" />
+    </type>
+</config>

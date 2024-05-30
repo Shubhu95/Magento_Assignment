@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Show contactus request in admin grid
+ *
+ * @category: Magento
+ * @package: Adecco\Contactus
+ * @copyright: Copyright © 2024 Magento, Inc. All rights reserved.
+ * @author: Shubham Lade <shubham.lade95@gmail.com>
+ * @keywords: Module Adecco_Contactus
+ */
+ -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Adecco_Contactus::base" title="Adecco" module="Adecco_Contactus"
+             sortOrder="30" resource="Adecco_Contactus::contactus"/>
+        <add id="Adecco_Contactus::manage_mlcontactus" title="Manage Contactus" module="Adecco_Contactus"
+             sortOrder="45" parent="Adecco_Contactus::base" action="admincontactus/contactus"
+             resource="Adecco_Contactus::manage_mlcontactus"/>
+    </menu>
+</config>

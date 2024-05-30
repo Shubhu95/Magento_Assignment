@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Add Shipment Receive option on checkout shipping address
+ *
+ * @category: Magento
+ * @package: Adecco\Checkout
+ * @copyright: Copyright © 2024 Magento, Inc. All rights reserved.
+ * @author: Shubham Lade <shubham.lade95@gmail.com>
+ * @keywords: Module Adecco_Checkout
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+    <extension_attributes for="Magento\Quote\Api\Data\AddressInterface">
+        <attribute code="shipment_receive" type="string" />
+    </extension_attributes>
+</config>
